@@ -902,6 +902,10 @@ class Builder extends QueryBuilder {
         $where['operator'] = '=';
         $where['value'] = null;
 
+	if (strpos($where['column'], 'deleted_at') !== false) {
+            $where['column'] = 'deleted_at';
+        }
+
         return $this->compileWhereBasic($where);
     }
 
